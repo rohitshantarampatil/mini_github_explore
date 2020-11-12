@@ -6,7 +6,7 @@ from termcolor import colored
 #Token
 
 
-TOKEN = "<Your Token Here"
+TOKEN = "<Your Token Here>"
 headers = {'Authorization':"Token "+TOKEN,'Accept':'application/vnd.github.cloak-preview'}
 
 '''
