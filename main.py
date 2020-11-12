@@ -6,7 +6,7 @@ from termcolor import colored
 #Token
 
 
-TOKEN = "<Your Github Access Token here>"
+TOKEN = "<Your Token Here"
 headers = {'Authorization':"Token "+TOKEN,'Accept':'application/vnd.github.cloak-preview'}
 
 '''
@@ -23,7 +23,7 @@ def getrepos(company,n,m):
             url = f"https://api.github.com/search/repositories?q=org:{company}&page=1&per_page={n}&sort=forks"
             repo=requests.get(url,headers=headers).json()
             repos.append(repo)
-        except :
+        except Exception as e :
             pass
     else:
         numpages = n//100+1
@@ -33,9 +33,10 @@ def getrepos(company,n,m):
                 url = f"https://api.github.com/search/repositories?q=org:{company}&page={i}&per_page=100&sort=forks"
                 repo=requests.get(url,headers=headers).json()
                 repos.append(repo)
-            except Execption as e:
+            except Exception as e:
                 pass
     print("Received repositories")
+
     ## Extractiong Repo name and forks
     for i in repos:
         for j in i['items']:
@@ -80,7 +81,7 @@ if __name__ == "__main__":
         print('1) Please enter input in following format')
         print('   <organization> <n> <m>')
         print('   e.g : google 10 4')
-        print('2) write 0 to exit')
+        print('2) write 0 to exit \n')
 
 
         inp = input().split()
@@ -99,6 +100,6 @@ if __name__ == "__main__":
                 print('Top m committees')
                 for user in commits[i]:
                     print("    username: ",colored(user['user'],'yellow'),', number of commits: ',colored(user['total_commits'],'yellow') )
-        except:
+        except Exception as e:
             print(colored('Error'),"Please check your input")
         print(colored("################################################################",'green'))
