@@ -30,3 +30,7 @@ TOKEN = "<your token here>"
 ```
 
 Run main.py to use the program.
+
+## Screenshots
+![screenshot_1](./images/screenshot_1.png)
+![screenshot_1](./images/screenshot_2.png)
